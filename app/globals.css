@@ -1,0 +1,615 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom gradient for Batman spotlight */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Custom glow effects */
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.hover\:text-glow:hover {
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* ===== MICRO INTERACTIONS & ANIMATIONS ===== */
+
+/* Scroll-triggered animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideInDown 0.7s ease-out forwards;
+}
+
+/* Button ripple effect */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+  transform: perspective(1px) translateZ(0);
+}
+
+.btn-ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Enhanced mobile touch interactions */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  position: relative;
+}
+
+/* Mobile-specific button animations */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-touch {
+    transition: all 0.2s ease;
+  }
+
+  .mobile-touch:active {
+    transform: scale(0.95);
+    filter: brightness(1.1);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Parallax scrolling effect */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Stagger animation delays */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* Intersection observer ready states */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Button glow intensification on mobile touch */
+.glow-intense {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glow-intense:active {
+  box-shadow: 0 0 40px currentColor;
+  transform: scale(1.02);
+}
+
+/* Loading shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse variations for different elements */
+.pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.pulse-fast {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Bounce animation for CTAs */
+@keyframes bounce-subtle {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-subtle {
+  animation: bounce-subtle 2s infinite;
+}
+
+/* ===== UNIQUE ENHANCED ANIMATIONS ===== */
+
+/* Neon pulse animation */
+@keyframes neonPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor,
+      0 0 15px currentColor;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+      0 0 30px currentColor;
+    transform: scale(1.02);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Slide in from bottom with bounce */
+@keyframes slideInUpBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* Slide in from top with elastic */
+@keyframes slideInDownElastic {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.1);
+  }
+  70% {
+    transform: translateY(-5px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* Zoom in with rotation */
+@keyframes zoomInRotate {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Flip in X */
+@keyframes flipInX {
+  0% {
+    opacity: 0;
+    transform: perspective(400px) rotateX(90deg);
+  }
+  40% {
+    transform: perspective(400px) rotateX(-20deg);
+  }
+  60% {
+    transform: perspective(400px) rotateX(10deg);
+  }
+  80% {
+    transform: perspective(400px) rotateX(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(400px) rotateX(0deg);
+  }
+}
+
+/* Slide and fade from left with overshoot */
+@keyframes slideLeftOvershoot {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* Slide and fade from right with overshoot */
+@keyframes slideRightOvershoot {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* Typewriter effect */
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Glow intensify */
+@keyframes glowIntensify {
+  0% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  100% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor,
+      0 0 40px currentColor;
+  }
+}
+
+/* Animation utility classes */
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up-bounce {
+  animation: slideInUpBounce 0.6s ease-out forwards;
+}
+
+.animate-slide-down-elastic {
+  animation: slideInDownElastic 0.8s ease-out forwards;
+}
+
+.animate-zoom-rotate {
+  animation: zoomInRotate 0.5s ease-out forwards;
+}
+
+.animate-flip-x {
+  animation: flipInX 0.7s ease-out forwards;
+}
+
+.animate-slide-left-overshoot {
+  animation: slideLeftOvershoot 0.6s ease-out forwards;
+}
+
+.animate-slide-right-overshoot {
+  animation: slideRightOvershoot 0.6s ease-out forwards;
+}
+
+.animate-glow-intensify {
+  animation: glowIntensify 0.5s ease-out forwards;
+}
+
+/* ===== GLITCH TRANSITION ANIMATIONS ===== */
+
+@keyframes glitchText {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitchLayer1 {
+  0%,
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  10% {
+    transform: translate(-2px, -1px);
+    opacity: 0.8;
+  }
+  20% {
+    transform: translate(2px, 1px);
+    opacity: 0.9;
+  }
+  30% {
+    transform: translate(-1px, 2px);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate(1px, -2px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-2px, 1px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes glitchLayer2 {
+  0%,
+  100% {
+    transform: translate(0);
+    opacity: 0.8;
+  }
+  15% {
+    transform: translate(1px, -1px);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(-1px, 1px);
+    opacity: 0.7;
+  }
+  35% {
+    transform: translate(2px, -1px);
+    opacity: 0.5;
+  }
+  45% {
+    transform: translate(-2px, 2px);
+    opacity: 0.6;
+  }
+  55% {
+    transform: translate(1px, 1px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes noiseBar {
+  0% {
+    top: 0%;
+    height: 3px;
+    opacity: 1;
+  }
+  25% {
+    top: 25%;
+    height: 2px;
+    opacity: 0.8;
+  }
+  50% {
+    top: 50%;
+    height: 4px;
+    opacity: 0.9;
+  }
+  75% {
+    top: 75%;
+    height: 1px;
+    opacity: 0.7;
+  }
+  100% {
+    top: 100%;
+    height: 3px;
+    opacity: 1;
+  }
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
