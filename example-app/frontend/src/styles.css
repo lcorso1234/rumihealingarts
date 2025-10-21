@@ -1,9 +1,0 @@
-/* Minimal resets for Tailwind CDN usage */
-html,
-body,
-#root {
-  height: 100%;
-}
-body {
-  margin: 0;
-}

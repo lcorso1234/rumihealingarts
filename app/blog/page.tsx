@@ -1,218 +1,131 @@
-import type { Metadata } from "next";
-import Navigation from "@/components/Navigation";
-import ScrollAnimation from "@/components/ScrollAnimation";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Wellness Resources - Rumi Healing Arts",
-  description:
-    "Access our library of wellness resources, health tips, and educational content about holistic healthcare and natural healing.",
-  keywords: [
-    "wellness resources",
-    "health tips",
-    "holistic healthcare blog",
-    "natural healing",
-    "wellness education",
-  ],
-};
+import { useState } from 'react';
+import Footer from '@/components/Footer';
 
-export default function Resources() {
+export default function Blog() {
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const blogPosts = [
+    { id: 1, category: 'blog', title: 'Natural Supplements Guide', description: 'How plant-based supplements enhance health', icon: '💊', color: 'from-red-500 to-rose-600' },
+    { id: 2, category: 'podcast', title: 'Energy Transformation Ep.12', description: 'Acupressure for chronic pain relief', icon: '🎙️', color: 'from-blue-600 to-cyan-500' },
+    { id: 3, category: 'video', title: 'Acupressure Tutorial', description: '5 pressure points for instant relief', icon: '📺', color: 'from-yellow-400 to-amber-500' },
+    { id: 4, category: 'blog', title: 'Immune Boosting Guide', description: 'Strengthen immunity naturally', icon: '🛡️', color: 'from-green-500 to-emerald-600' },
+    { id: 5, category: 'podcast', title: 'Sleep Better Ep.15', description: 'Natural remedies for quality sleep', icon: '🎙️', color: 'from-purple-500 to-violet-600' },
+    { id: 6, category: 'video', title: 'Morning Wellness Routine', description: '10-min daily health routine', icon: '📺', color: 'from-orange-500 to-red-500' },
+    { id: 7, category: 'blog', title: 'Gut Health Revolution', description: 'Probiotics transform wellness', icon: '🌿', color: 'from-pink-500 to-rose-600' },
+    { id: 8, category: 'podcast', title: 'Pain-Free Living Ep.18', description: 'Patient stories of healing', icon: '🎙️', color: 'from-cyan-500 to-blue-500' },
+    { id: 9, category: 'video', title: 'Supplement Basics', description: 'Essential vitamins explained', icon: '📺', color: 'from-lime-400 to-green-500' },
+  ];
+
+  const filteredPosts = activeCategory === 'all' ? blogPosts : blogPosts.filter(post => post.category === activeCategory);
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  const displayedPosts = filteredPosts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 via-blue-50 to-purple-50 relative overflow-hidden">
-      {/* Soft background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="h-full w-full" style={{
-          backgroundImage: `radial-gradient(circle, #10b981 1px, transparent 1px)`,
-          backgroundSize: '30px 30px'
-        }}></div>
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10">
-        <section className="min-h-screen flex flex-col justify-center items-center px-8 pb-32 pt-20">
-          <div className="max-w-6xl mx-auto">
-            {/* Main Title */}
-            <ScrollAnimation animation="slideInDown" delay={0.2}>
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black mb-12 text-center">
-                <span className="bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  WELLNESS RESOURCES
-                </span>
-              </h1>
-            </ScrollAnimation>
-
-            {/* Intro */}
-            <ScrollAnimation animation="fadeInUp" delay={0.4}>
-              <p className="text-xl sm:text-2xl text-gray-700 text-center mb-16 max-w-4xl mx-auto">
-                Empowering you with knowledge and practical guidance for your wellness journey.
-              </p>
-            </ScrollAnimation>
-
-            {/* Resource Categories */}
-            <div className="space-y-12">
-              {/* Health Tips */}
-              <ScrollAnimation animation="fadeInLeft" delay={0.5}>
-                <div className="p-8 bg-white/80 backdrop-blur-sm border-2 border-teal-400 rounded-3xl shadow-xl">
-                  <h2 className="text-3xl sm:text-4xl font-black text-teal-700 mb-6 flex items-center gap-4">
-                    <span className="text-5xl">💚</span>
-                    Daily Wellness Tips
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-teal-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-teal-700 mb-2">Morning Rituals for Optimal Health</h3>
-                      <p className="text-gray-700">Start your day with intention: hydration, gentle movement, and mindful breathing set the tone for wellness.</p>
-                    </div>
-                    <div className="p-4 bg-teal-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-teal-700 mb-2">The Power of Sleep</h3>
-                      <p className="text-gray-700">Quality sleep is the foundation of health. Learn how to optimize your sleep environment and bedtime routine.</p>
-                    </div>
-                    <div className="p-4 bg-teal-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-teal-700 mb-2">Stress-Busting Techniques</h3>
-                      <p className="text-gray-700">Simple, effective strategies you can use anytime to calm your nervous system and restore balance.</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              {/* Nutrition Guides */}
-              <ScrollAnimation animation="fadeInRight" delay={0.6}>
-                <div className="p-8 bg-white/80 backdrop-blur-sm border-2 border-blue-400 rounded-3xl shadow-xl">
-                  <h2 className="text-3xl sm:text-4xl font-black text-blue-700 mb-6 flex items-center gap-4">
-                    <span className="text-5xl">🥗</span>
-                    Nutrition Guides
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-blue-700 mb-2">Eating with the Seasons</h3>
-                      <p className="text-gray-700">Discover how to nourish your body with seasonal, local foods that support optimal health year-round.</p>
-                    </div>
-                    <div className="p-4 bg-blue-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-blue-700 mb-2">Anti-Inflammatory Foods</h3>
-                      <p className="text-gray-700">Learn which foods naturally reduce inflammation and support your body's healing processes.</p>
-                    </div>
-                    <div className="p-4 bg-blue-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-blue-700 mb-2">Gut Health Essentials</h3>
-                      <p className="text-gray-700">Understanding the gut-brain connection and how to support your digestive health naturally.</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              {/* Healing Practices */}
-              <ScrollAnimation animation="fadeInLeft" delay={0.7}>
-                <div className="p-8 bg-white/80 backdrop-blur-sm border-2 border-purple-400 rounded-3xl shadow-xl">
-                  <h2 className="text-3xl sm:text-4xl font-black text-purple-700 mb-6 flex items-center gap-4">
-                    <span className="text-5xl">🧘</span>
-                    Healing Practices
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-purple-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-purple-700 mb-2">Introduction to Meditation</h3>
-                      <p className="text-gray-700">Begin your meditation practice with simple, accessible techniques for beginners.</p>
-                    </div>
-                    <div className="p-4 bg-purple-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-purple-700 mb-2">Breathwork for Healing</h3>
-                      <p className="text-gray-700">Harness the power of conscious breathing to reduce stress and enhance vitality.</p>
-                    </div>
-                    <div className="p-4 bg-purple-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-purple-700 mb-2">Self-Care Rituals</h3>
-                      <p className="text-gray-700">Create meaningful self-care practices that nourish your body, mind, and spirit.</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              {/* Herbal Medicine */}
-              <ScrollAnimation animation="fadeInRight" delay={0.8}>
-                <div className="p-8 bg-white/80 backdrop-blur-sm border-2 border-green-400 rounded-3xl shadow-xl">
-                  <h2 className="text-3xl sm:text-4xl font-black text-green-700 mb-6 flex items-center gap-4">
-                    <span className="text-5xl">🌿</span>
-                    Herbal Medicine Wisdom
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-green-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-green-700 mb-2">Common Healing Herbs</h3>
-                      <p className="text-gray-700">A guide to everyday herbs and their therapeutic properties for home use.</p>
-                    </div>
-                    <div className="p-4 bg-green-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-green-700 mb-2">Herbal Teas for Wellness</h3>
-                      <p className="text-gray-700">Discover healing herbal tea blends for various health concerns and conditions.</p>
-                    </div>
-                    <div className="p-4 bg-green-50 rounded-xl">
-                      <h3 className="text-xl font-bold text-green-700 mb-2">Adaptogenic Herbs</h3>
-                      <p className="text-gray-700">Learn about adaptogens that help your body cope with stress and maintain balance.</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              {/* Educational Resources */}
-              <ScrollAnimation animation="fadeInUp" delay={0.9}>
-                <div className="p-8 bg-gradient-to-r from-teal-100 via-blue-100 to-purple-100 rounded-3xl shadow-xl">
-                  <h2 className="text-3xl sm:text-4xl font-black mb-6 text-center">
-                    <span className="bg-gradient-to-r from-teal-700 to-purple-700 bg-clip-text text-transparent">
-                      EDUCATIONAL RESOURCES
-                    </span>
-                  </h2>
-                  <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <div className="p-6 bg-white rounded-2xl shadow-lg">
-                      <h3 className="text-2xl font-bold text-teal-700 mb-3 flex items-center gap-3">
-                        <span className="text-3xl">📚</span>
-                        Recommended Reading
-                      </h3>
-                      <p className="text-gray-700">Curated books and articles on holistic health, nutrition, and natural healing.</p>
-                    </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-lg">
-                      <h3 className="text-2xl font-bold text-blue-700 mb-3 flex items-center gap-3">
-                        <span className="text-3xl">🎥</span>
-                        Video Library
-                      </h3>
-                      <p className="text-gray-700">Educational videos on various wellness topics and healing practices.</p>
-                    </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-lg">
-                      <h3 className="text-2xl font-bold text-purple-700 mb-3 flex items-center gap-3">
-                        <span className="text-3xl">🎧</span>
-                        Guided Meditations
-                      </h3>
-                      <p className="text-gray-700">Audio recordings to support your meditation and relaxation practice.</p>
-                    </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-lg">
-                      <h3 className="text-2xl font-bold text-green-700 mb-3 flex items-center gap-3">
-                        <span className="text-3xl">📝</span>
-                        Health Worksheets
-                      </h3>
-                      <p className="text-gray-700">Downloadable tools to track your wellness journey and set health goals.</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            </div>
-
-            {/* Newsletter Signup */}
-            <ScrollAnimation animation="scaleIn" delay={1.0}>
-              <div className="text-center mt-16 p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl">
-                <h2 className="text-3xl font-black text-teal-700 mb-4">
-                  STAY CONNECTED
-                </h2>
-                <p className="text-xl text-gray-700 mb-6">
-                  Subscribe to our newsletter for weekly wellness tips and updates
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="flex-1 px-6 py-3 rounded-full border-2 border-teal-400 focus:outline-none focus:border-teal-600"
-                  />
-                  <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-bold shadow-lg transform hover:scale-105 transition-all">
-                    SUBSCRIBE
-                  </button>
-                </div>
-              </div>
-            </ScrollAnimation>
+    <div className="min-h-screen bg-black pb-24">
+      
+      {/* HERO - Compact */}
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+        <div className="relative bg-gradient-to-br from-orange-500 to-red-600 border-r-8 border-b-8 border-black flex items-center justify-center p-8">
+          <div className="text-center">
+            <div className="text-7xl mb-4">📚</div>
+            <h1 className="text-6xl md:text-7xl font-black text-black uppercase leading-none" style={{ fontFamily: 'Arial Black, sans-serif', textShadow: '4px 4px 0px rgba(0,0,0,0.3)' }}>HEALTH<br/>BLOG</h1>
           </div>
-        </section>
-      </div>
+        </div>
+        <div className="relative bg-gradient-to-br from-cyan-500 to-blue-600 border-b-8 border-black flex items-center justify-center p-8">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-black uppercase mb-4 leading-tight" style={{ fontFamily: 'Arial Black, sans-serif', textShadow: '3px 3px 0px rgba(0,0,0,0.3)' }}>LEARN • TRANSFORM • THRIVE</h2>
+            <p className="text-2xl text-black/90 font-bold">Articles • Podcasts • Videos</p>
+          </div>
+        </div>
+      </section>
 
-      {/* Navigation */}
-      <Navigation theme="blue" />
+      {/* CATEGORY TABS - Compact */}
+      <section className="border-b-8 border-black bg-gradient-to-r from-purple-600 to-pink-600 p-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap gap-3 justify-center">
+          {[
+            { key: 'all', label: 'ALL', icon: '📂' },
+            { key: 'podcast', label: 'PODCAST', icon: '🎙️' },
+            { key: 'video', label: 'VIDEO', icon: '📺' },
+            { key: 'blog', label: 'BLOG', icon: '✍️' }
+          ].map(cat => (
+            <button key={cat.key} onClick={() => { setActiveCategory(cat.key); setCurrentPage(1); }} className={`px-6 py-3 font-black text-sm uppercase border-4 border-black transition-all ${activeCategory === cat.key ? 'bg-yellow-400 text-black' : 'bg-black text-white hover:bg-yellow-400 hover:text-black'}`} style={{ fontFamily: 'Arial Black, sans-serif' }}>
+              {cat.icon} {cat.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* BLOG GRID - Compact */}
+      <section className="grid grid-cols-1 md:grid-cols-3">
+        {displayedPosts.map((post) => (
+          <div key={post.id} className={`relative bg-gradient-to-br ${post.color} border-r-8 border-b-8 border-black min-h-[300px] flex items-center justify-center p-6 hover:brightness-110 transition-all cursor-pointer`}>
+            <div className="text-center">
+              <div className="text-5xl mb-3">{post.icon}</div>
+              <h3 className="text-2xl font-black text-black uppercase mb-2 leading-tight" style={{ fontFamily: 'Arial Black, sans-serif', textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>{post.title}</h3>
+              <p className="text-sm text-black/90 font-bold mb-3">{post.description}</p>
+              <button className="bg-black text-white px-4 py-2 border-4 border-black font-black text-xs uppercase hover:bg-white hover:text-black transition-all">READ</button>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* PAGINATION - Compact */}
+      <section className="border-b-8 border-black bg-gradient-to-r from-green-500 to-emerald-600 p-4">
+        <div className="max-w-6xl mx-auto flex gap-3 justify-center items-center flex-wrap">
+          <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="bg-black text-yellow-400 px-4 py-2 border-4 border-black font-black text-sm uppercase disabled:opacity-50 hover:bg-yellow-400 hover:text-black transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>← PREV</button>
+          {[...Array(totalPages)].map((_, i) => (
+            <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-4 py-2 font-black text-sm border-4 border-black transition-all ${currentPage === i + 1 ? 'bg-yellow-400 text-black' : 'bg-black text-white hover:bg-yellow-400 hover:text-black'}`} style={{ fontFamily: 'Arial Black, sans-serif' }}>{i + 1}</button>
+          ))}
+          <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="bg-black text-yellow-400 px-4 py-2 border-4 border-black font-black text-sm uppercase disabled:opacity-50 hover:bg-yellow-400 hover:text-black transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>NEXT →</button>
+        </div>
+      </section>
+
+      <Footer />
+
+      {/* NAV */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t-8 border-black">
+        <div className="bg-black/95 backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="text-2xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>RUMI</div>
+            <div className="flex gap-4">
+              <a href="/" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black hover:scale-105 transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>HOME</a>
+              <a href="/shop" className="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black hover:scale-105 transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>SHOP</a>
+              <a href="/blog" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black hover:scale-105 transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>BLOG</a>
+              <button onClick={() => document.getElementById('connect-modal')?.classList.toggle('hidden')} className="bg-gradient-to-r from-purple-500 to-pink-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black hover:scale-105 transition-all" style={{ fontFamily: 'Arial Black, sans-serif' }}>CONNECT</button>
+            </div>
+            <button onClick={() => { if (navigator.share) navigator.share({ title: 'Rumi Healing Blog', url: window.location.href }).catch(() => {}); else { navigator.clipboard.writeText(window.location.href); alert('Link copied!'); } }} className="bg-gradient-to-br from-orange-500 to-red-500 text-white p-3 border-4 border-black hover:scale-110 transition-all">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* CONNECT MODAL */}
+      <div id="connect-modal" className="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 border-8 border-black max-w-2xl w-full p-12 rounded-3xl" style={{ boxShadow: '0 0 60px rgba(236,72,153,0.8)' }}>
+          <button onClick={() => document.getElementById('connect-modal')?.classList.add('hidden')} className="absolute top-4 right-4 text-black bg-yellow-400 hover:bg-yellow-300 rounded-full w-12 h-12 flex items-center justify-center text-3xl font-black border-4 border-black transition-all hover:scale-110">×</button>
+          <h2 className="text-6xl md:text-7xl font-black text-black uppercase mb-8 text-center leading-none" style={{ fontFamily: 'Arial Black, sans-serif', textShadow: '4px 4px 0px rgba(0,0,0,0.3)' }}>CONNECT<br/>WITH US</h2>
+          <div className="space-y-6">
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3"><div className="text-5xl">📧</div><h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>EMAIL</h3></div>
+              <a href="mailto:lawrencecorso1@gmail.com" className="text-2xl font-bold text-yellow-300 hover:text-yellow-400 transition-colors break-all">lawrencecorso1@gmail.com</a>
+            </div>
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3"><div className="text-5xl">📱</div><h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>PHONE</h3></div>
+              <a href="tel:+15551234567" className="text-2xl font-bold text-yellow-300 hover:text-yellow-400 transition-colors">(555) 123-4567</a>
+            </div>
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3"><div className="text-5xl">📍</div><h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>LOCATION</h3></div>
+              <p className="text-2xl font-bold text-yellow-300">Chicago, Illinois</p>
+            </div>
+          </div>
+          <div className="mt-8 text-center"><p className="text-xl font-bold text-white/90">Book your consultation today!</p></div>
+        </div>
+      </div>
     </div>
   );
 }

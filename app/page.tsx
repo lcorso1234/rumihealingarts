@@ -1,176 +1,361 @@
-import type { Metadata } from "next";
-import Navigation from "@/components/Navigation";
-import Image from "next/image";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Rumi Healing Arts - Earth-Centered Holistic Healing",
-  description:
-    "Experience holistic healing that encompasses your entire life - business, wellness, fashion, movement, and spirit. Rooted in earth's ancient wisdom.",
-  keywords: [
-    "holistic healing",
-    "business healing",
-    "qi gong",
-    "tai chi",
-    "holistic fashion",
-    "earth healing",
-    "supplements",
-  ],
-};
+import { useEffect } from 'react';
+import Footer from '@/components/Footer';
 
 export default function Home() {
+  useEffect(() => {
+    // Scroll animation observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* Main Content */}
-      <div className="relative z-10 px-8 py-12 space-y-12 max-w-[1400px] mx-auto">
+    <div className="min-h-screen bg-black">
+      
+      <style jsx global>{`
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-in {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+          50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6); }
+        }
+        .glow-pulse {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+      `}</style>
+      
+      {/* HERO GRID - Golden Ratio Layout - NO GAPS */}
+      <section className="grid grid-cols-1 md:grid-cols-[1.618fr_1fr] min-h-screen">
         
-        {/* Section 1: Business Healing - Text Left, Image Right */}
-        <div className="relative rounded-[40px] border-4 border-blue-400 bg-gradient-to-br from-purple-300 via-blue-300 to-teal-300 overflow-hidden min-h-[600px]">
-          <div className="grid grid-cols-2 h-full">
-            {/* Left side - Text */}
-            <div className="flex items-center p-16">
-              <div>
-                <h1 className="text-white font-bold text-7xl leading-tight uppercase tracking-wide mb-8">
-                  HEAL YOUR<br />
-                  BUSINESS<br />
-                  FROM THE<br />
-                  ROOTS UP.
-                </h1>
-                <p className="text-white text-xl leading-relaxed">
-                  Transform toxic workplace cultures into thriving ecosystems. We guide leaders to align their business with earth-conscious values, creating sustainable growth that honors both profit and planet.
-                </p>
-              </div>
-            </div>
-
-            {/* Right side - Image */}
-            <div className="relative h-full">
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=800&fit=crop"
-                alt="Team collaboration"
-                className="w-full h-full object-cover opacity-80"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Section 2: Qi Gong & Tai Chi - Image Left, Text Right */}
-        <div className="relative rounded-[40px] border-4 border-green-400 bg-gradient-to-br from-green-300 via-emerald-300 to-teal-300 overflow-hidden min-h-[600px]">
-          <div className="grid grid-cols-2 h-full">
-            {/* Left side - Image */}
-            <div className="relative h-full">
-              <img 
-                src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&h=800&fit=crop"
-                alt="Person practicing Tai Chi in nature"
-                className="w-full h-full object-cover opacity-80"
-              />
-            </div>
-
-            {/* Right side - Text */}
-            <div className="flex items-center p-16">
-              <div>
-                <h1 className="text-white font-bold text-7xl leading-tight uppercase tracking-wide mb-8">
-                  CULTIVATE<br />
-                  VITAL ENERGY<br />
-                  THROUGH<br />
-                  MOVEMENT.
-                </h1>
-                <p className="text-white text-xl leading-relaxed">
-                  Ancient Chinese practices of Qi Gong and Tai Chi restore balance to your body's energy systems. Through slow, mindful movements and breathwork, reconnect with the life force that flows through all living things.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Supplements - Centered Text Over Image */}
-        <div className="relative rounded-[40px] border-4 border-teal-400 bg-gradient-to-br from-teal-300 via-cyan-300 to-blue-300 overflow-hidden min-h-[600px] flex items-center justify-center">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1400&h=800&fit=crop"
-              alt="Fresh herbs and botanical ingredients"
-              className="w-full h-full object-cover opacity-60"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/40 via-cyan-500/40 to-blue-500/40"></div>
-          </div>
-
-          {/* Centered Text Content */}
-          <div className="relative z-10 text-center px-16 max-w-4xl">
-            <h1 className="text-white font-bold text-7xl leading-tight uppercase tracking-wide mb-8">
-              NATURE'S<br />
-              MEDICINE<br />
-              FOR YOUR<br />
-              WELLNESS.
+        {/* Left Panel - Red/Orange */}
+        <div className="relative bg-gradient-to-br from-red-600 to-orange-600 border-r-8 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+          <div className="absolute inset-0 opacity-30" style={{
+            backgroundImage: 'radial-gradient(circle, black 2px, transparent 2px)',
+            backgroundSize: '20px 20px',
+          }}></div>
+          
+          <div className="relative z-10 text-center max-w-2xl">
+            <h1 className="text-[12vw] md:text-9xl font-black text-black uppercase leading-none mb-8 transition-all duration-300 hover:scale-105" style={{
+              fontFamily: 'Arial Black, sans-serif',
+              textShadow: '6px 6px 0px rgba(0,0,0,0.3)',
+            }}>
+              RUMI<br/>HEALING
             </h1>
-            <p className="text-white text-2xl leading-relaxed">
-              Pure botanical supplements sourced directly from the earth. Adaptogenic herbs, medicinal mushrooms, and plant-based nutrition support your body's innate healing wisdom. Every formula is organic, sustainably harvested, and energetically blessed.
+            <p className="text-3xl md:text-4xl font-bold text-black/90 uppercase tracking-wider transition-all duration-300 hover:text-black">
+              Natural Healthcare Revolution
             </p>
           </div>
         </div>
 
-        {/* Section 4: Fashion - Split Layout with Text Bottom */}
-        <div className="relative rounded-[40px] border-4 border-purple-400 bg-gradient-to-br from-purple-300 via-pink-300 to-rose-300 overflow-hidden min-h-[600px]">
-          <div className="flex flex-col h-full">
-            {/* Top - Image */}
-            <div className="relative h-[350px]">
-              <img 
-                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&h=500&fit=crop"
-                alt="Sustainable natural fiber clothing"
-                className="w-full h-full object-cover opacity-80"
-              />
-            </div>
+        {/* Right Panel - Yellow */}
+        <div className="relative bg-gradient-to-br from-yellow-400 to-amber-500 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+          <div className="absolute inset-0 opacity-20" style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, black 0px, black 3px, transparent 3px, transparent 15px)',
+          }}></div>
+          
+          <div className="relative z-10 text-center">
+            <div className="text-9xl mb-6 drop-shadow-2xl transition-all duration-300 hover:scale-110 hover:rotate-12">🌿</div>
+            <h2 className="text-4xl md:text-5xl font-black text-black uppercase mb-4 transition-all duration-300 hover:scale-105" style={{
+              fontFamily: 'Arial Black, sans-serif',
+            }}>
+              PURE HEALING
+            </h2>
+            <p className="text-xl text-black/80 font-bold">
+              Checkups • Supplements • Acupressure
+            </p>
+          </div>
+        </div>
+      </section>
 
-            {/* Bottom - Text */}
-            <div className="flex-1 flex items-center justify-center p-16">
-              <div className="text-center max-w-4xl">
-                <h1 className="text-white font-bold text-6xl leading-tight uppercase tracking-wide mb-6">
-                  WEAR YOUR TRUTH WITH CONSCIOUS STYLE.
-                </h1>
-                <p className="text-white text-xl leading-relaxed">
-                  What you wear affects your energy field. We curate sustainable fashion that aligns with your authentic self and honors the earth. Natural fibers, ethical production, and conscious style choices that support your personal transformation and planetary healing.
-                </p>
-              </div>
-            </div>
+      {/* SERVICES GRID - Golden Ratio - NO GAPS */}
+      <section className="grid grid-cols-1 md:grid-cols-[1fr_1.618fr]">
+        
+        {/* Blue Panel */}
+        <div className="relative bg-gradient-to-br from-blue-600 to-cyan-500 border-r-8 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+          <div className="text-center">
+            <div className="text-8xl mb-6 transition-all duration-500 hover:scale-125 hover:rotate-12">🩺</div>
+            <h3 className="text-5xl font-black text-black uppercase transition-all duration-300 hover:scale-105" style={{
+              fontFamily: 'Arial Black, sans-serif',
+            }}>
+              HEALTH<br/>CHECKUPS
+            </h3>
           </div>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="flex justify-end gap-6 mb-20">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="black" strokeWidth="2"/>
-              <circle cx="12" cy="12" r="4" stroke="black" strokeWidth="2"/>
-              <circle cx="18" cy="6" r="1" fill="black"/>
-            </svg>
-          </a>
+        {/* Purple/Red Split - NO GAPS */}
+        <div className="grid grid-rows-[1fr_1.618fr] border-b-8 border-black">
+          <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 border-b-8 border-black flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+            <div className="text-center">
+              <h3 className="text-4xl font-black text-white uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+                textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
+              }}>
+                SUPPLEMENTS
+              </h3>
+              <p className="text-xl text-white/90 font-bold">
+                100% Natural • Medical Grade
+              </p>
+            </div>
+          </div>
           
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </a>
+          <div className="relative bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+            <div className="text-center max-w-2xl">
+              <h3 className="text-6xl md:text-7xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+                textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
+              }}>
+                ACUPRESSURE<br/>THERAPY
+              </h3>
+              <p className="text-2xl text-black/90 font-bold">
+                Pain Relief • Energy Balance • Stress Reduction
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION GRID - NO GAPS */}
+      <section className="grid grid-cols-1 md:grid-cols-[1.618fr_1fr]">
+        
+        {/* Green Panel */}
+        <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 border-r-8 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+          <div className="text-center max-w-2xl">
+            <h3 className="text-6xl md:text-8xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+              fontFamily: 'Arial Black, sans-serif',
+              textShadow: '5px 5px 0px rgba(0,0,0,0.3)',
+            }}>
+              20+ YEARS<br/>EXPERIENCE
+            </h3>
+            <p className="text-3xl text-black/90 font-bold">
+              10,000+ Lives Transformed
+            </p>
+          </div>
+        </div>
+
+        {/* Cyan/Orange Split - NO GAPS */}
+        <div className="grid grid-rows-[1fr_1.618fr] border-b-8 border-black">
+          <div className="relative bg-gradient-to-br from-cyan-500 to-blue-500 border-b-8 border-black flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+            <div className="text-center">
+              <div className="text-7xl mb-4 transition-all duration-500 hover:scale-125">⚡</div>
+              <h3 className="text-3xl font-black text-black uppercase transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+              }}>
+                FAST RESULTS
+              </h3>
+            </div>
+          </div>
           
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </a>
+          <div className="relative bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+            <div className="text-center">
+              <h3 className="text-5xl md:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+                textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
+              }}>
+                SCIENCE<br/>BACKED
+              </h3>
+              <p className="text-2xl text-black/90 font-bold">
+                Evidence-Based Natural Medicine
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA PANEL - NO GAPS */}
+      <section className="grid grid-cols-1 md:grid-cols-[1fr_1.618fr]">
+        
+        {/* Purple CTA */}
+        <div className="relative bg-gradient-to-br from-purple-500 to-violet-600 border-r-8 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+          <div className="text-center">
+            <div className="text-8xl mb-6 transition-all duration-500 hover:scale-125">📧</div>
+            <h3 className="text-4xl font-black text-white uppercase mb-4 transition-all duration-300 hover:scale-105" style={{
+              fontFamily: 'Arial Black, sans-serif',
+              textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
+            }}>
+              BOOK NOW
+            </h3>
+            <a 
+              href="mailto:lawrencecorso1@gmail.com"
+              className="inline-block bg-black text-yellow-400 px-8 py-4 border-4 border-black font-black text-xl uppercase transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:scale-110"
+            >
+              EMAIL US
+            </a>
+          </div>
+        </div>
+
+        {/* Yellow/Pink Final - NO GAPS */}
+        <div className="grid grid-rows-[1.618fr_1fr] border-b-8 border-black">
+          <div className="relative bg-gradient-to-br from-yellow-400 to-orange-500 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+            <div className="text-center max-w-xl">
+              <h3 className="text-5xl md:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+                textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
+              }}>
+                YOUR HEALTH<br/>YOUR POWER
+              </h3>
+              <p className="text-2xl text-black/90 font-bold">
+                Take Control Today
+              </p>
+            </div>
+          </div>
           
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
+          <div className="relative bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+            <div className="text-center">
+              <p className="text-2xl font-black text-white mb-4 transition-all duration-300 hover:scale-105" style={{
+                fontFamily: 'Arial Black, sans-serif',
+              }}>
+                lawrencecorso1@gmail.com
+              </p>
+              <p className="text-lg text-white/90 font-bold">
+                Chicago • Natural Healthcare
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <Footer />
+
+      {/* NAVIGATION - Bottom Fixed */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t-8 border-black glow-pulse">
+        <div className="bg-black/95 backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            
+            {/* Logo */}
+            <div className="text-2xl font-black text-white uppercase transition-all duration-300 hover:scale-110 hover:text-cyan-400" style={{
+              fontFamily: 'Arial Black, sans-serif',
+            }}>
+              RUMI
+            </div>
+
+            {/* Menu */}
+            <div className="flex gap-4">
+              <a href="/" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black transition-all duration-300 hover:scale-110 hover:shadow-2xl" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                HOME
+              </a>
+              <a href="/shop" className="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black transition-all duration-300 hover:scale-110 hover:shadow-2xl" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                SHOP
+              </a>
+              <a href="/blog" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black transition-all duration-300 hover:scale-110 hover:shadow-2xl" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                BLOG
+              </a>
+              <button
+                onClick={() => document.getElementById('connect-modal')?.classList.toggle('hidden')}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-black px-8 py-3 font-black text-base uppercase border-4 border-black transition-all duration-300 hover:scale-110 hover:shadow-2xl" style={{ fontFamily: 'Arial Black, sans-serif' }}
+              >
+                CONNECT
+              </button>
+            </div>
+
+            {/* Icons */}
+            <div className="flex gap-3">
+              <button 
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({ title: 'Rumi Healing Arts', url: window.location.href }).catch(() => {});
+                  } else {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied!');
+                  }
+                }}
+                className="bg-gradient-to-br from-orange-500 to-red-500 text-white p-3 border-4 border-black transition-all duration-300 hover:scale-125 hover:rotate-12"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* CONNECT MODAL */}
+      <div id="connect-modal" className="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 border-8 border-black max-w-2xl w-full p-12 rounded-3xl" style={{
+          boxShadow: '0 0 60px rgba(236,72,153,0.8)',
+        }}>
+          <button 
+            onClick={() => document.getElementById('connect-modal')?.classList.add('hidden')}
+            className="absolute top-4 right-4 text-black bg-yellow-400 hover:bg-yellow-300 rounded-full w-12 h-12 flex items-center justify-center text-3xl font-black border-4 border-black transition-all hover:scale-110"
+          >
+            ×
+          </button>
           
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
-          </a>
+          <h2 className="text-6xl md:text-7xl font-black text-black uppercase mb-8 text-center leading-none" style={{
+            fontFamily: 'Arial Black, sans-serif',
+            textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
+          }}>
+            CONNECT<br/>WITH US
+          </h2>
+
+          <div className="space-y-6">
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="text-5xl">📧</div>
+                <h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                  EMAIL
+                </h3>
+              </div>
+              <a href="mailto:lawrencecorso1@gmail.com" className="text-2xl font-bold text-yellow-300 hover:text-yellow-400 transition-colors break-all">
+                lawrencecorso1@gmail.com
+              </a>
+            </div>
+
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="text-5xl">📱</div>
+                <h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                  PHONE
+                </h3>
+              </div>
+              <a href="tel:+15551234567" className="text-2xl font-bold text-yellow-300 hover:text-yellow-400 transition-colors">
+                (555) 123-4567
+              </a>
+            </div>
+
+            <div className="bg-black/30 p-8 border-4 border-black rounded-2xl">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="text-5xl">📍</div>
+                <h3 className="text-3xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                  LOCATION
+                </h3>
+              </div>
+              <p className="text-2xl font-bold text-yellow-300">
+                Chicago, Illinois
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-xl font-bold text-white/90">
+              Book your consultation today!
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* Navigation */}
-      <Navigation theme="green" />
     </div>
   );
 }
