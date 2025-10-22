@@ -86,9 +86,10 @@ export default function Blog() {
 
       <Footer />
 
-      {/* NAV - LP-BOX STYLE */}
+      {/* NAV - LP-BOX STYLE - RESPONSIVE */}
       <nav className="sticky bottom-0 z-50 border-t-8 border-black">
-        <div className="grid grid-cols-[1fr_1.618fr_1fr] h-24">
+        {/* Desktop Navigation */}
+        <div className="hidden md:grid grid-cols-[1fr_1.618fr_1fr] h-24">
           <div className="relative bg-gradient-to-br from-red-600 to-orange-600 border-r-8 border-black flex items-center justify-center transition-all duration-300 hover:brightness-110">
             <a href="/" className="text-4xl font-black text-black uppercase transition-all duration-300 hover:scale-110" style={{ fontFamily: 'Arial Black, sans-serif', textShadow: '3px 3px 0px rgba(0,0,0,0.3)' }}>RUMI</a>
           </div>
@@ -103,6 +104,25 @@ export default function Blog() {
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
             </button>
           </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="grid md:hidden grid-cols-2 h-auto">
+          <a href="/" className="bg-gradient-to-br from-cyan-500 to-blue-500 border-r-8 border-b-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            HOME
+          </a>
+          <a href="/shop" className="bg-gradient-to-br from-green-500 to-emerald-500 border-b-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            SHOP
+          </a>
+          <a href="/blog" className="bg-gradient-to-br from-yellow-400 to-orange-500 border-r-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            BLOG
+          </a>
+          <button
+            onClick={() => document.getElementById('connect-modal')?.classList.toggle('hidden')}
+            className="bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}
+          >
+            CONNECT
+          </button>
         </div>
       </nav>
 

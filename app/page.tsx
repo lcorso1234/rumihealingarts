@@ -239,9 +239,10 @@ export default function Home() {
       {/* FOOTER */}
       <Footer />
 
-      {/* NAVIGATION - LP-BOX STYLE */}
+      {/* NAVIGATION - LP-BOX STYLE - RESPONSIVE */}
       <nav className="sticky bottom-0 z-50 border-t-8 border-black">
-        <div className="grid grid-cols-[1fr_1.618fr_1fr] h-24">
+        {/* Desktop Navigation */}
+        <div className="hidden md:grid grid-cols-[1fr_1.618fr_1fr] h-24">
           
           {/* Logo Block - Red */}
           <div className="relative bg-gradient-to-br from-red-600 to-orange-600 border-r-8 border-black flex items-center justify-center transition-all duration-300 hover:brightness-110">
@@ -290,6 +291,25 @@ export default function Home() {
               </svg>
             </button>
           </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="grid md:hidden grid-cols-2 h-auto">
+          <a href="/" className="bg-gradient-to-br from-cyan-500 to-blue-500 border-r-8 border-b-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            HOME
+          </a>
+          <a href="/shop" className="bg-gradient-to-br from-green-500 to-emerald-500 border-b-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            SHOP
+          </a>
+          <a href="/blog" className="bg-gradient-to-br from-yellow-400 to-orange-500 border-r-8 border-black flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+            BLOG
+          </a>
+          <button
+            onClick={() => document.getElementById('connect-modal')?.classList.toggle('hidden')}
+            className="bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-black text-sm text-black uppercase py-4 transition-all hover:brightness-110" style={{ fontFamily: 'Arial Black, sans-serif' }}
+          >
+            CONNECT
+          </button>
         </div>
       </nav>
 
