@@ -138,11 +138,11 @@ export default function Blog() {
             </div>
             <div className="bg-black/30 p-4 border-4 border-black rounded-xl">
               <div className="flex items-center gap-3 mb-2"><div className="text-3xl">📱</div><h3 className="text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>PHONE</h3></div>
-              <a href="tel:+15551234567" className="text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors">(555) 123-4567</a>
+              <a href="tel:+17089326851" className="text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors">1.708.932.6851</a>
             </div>
             <div className="bg-black/30 p-4 border-4 border-black rounded-xl">
               <div className="flex items-center gap-3 mb-2"><div className="text-3xl">📍</div><h3 className="text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>LOCATION</h3></div>
-              <p className="text-base font-bold text-yellow-300">Chicago, Illinois</p>
+              <p className="text-base font-bold text-yellow-300">12803 Circle Pkwy, Palos Park, IL 60464</p>
             </div>
           </div>
           <div className="mt-4 text-center"><p className="text-sm font-bold text-white/90">Book your consultation today!</p></div>

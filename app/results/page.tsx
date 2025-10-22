@@ -145,10 +145,10 @@ export default function ResultsPage() {
           <p>
             Want to see how this maps to your metrics?{" "}
             <a
-              href="tel:7089326851"
+              href="tel:+17089326851"
               className="font-semibold text-fuchsia-200 underline decoration-dotted decoration-fuchsia-300 underline-offset-4"
             >
-              Call 708.932.6851
+              Call 1.708.932.6851
             </a>{" "}
             or{" "}
             <a

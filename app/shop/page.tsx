@@ -42,41 +42,41 @@ export default function Shop() {
       <section className="grid grid-cols-1 md:grid-cols-[1.618fr_1fr] min-h-screen">
         
         {/* Left Panel - Green */}
-        <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 border-r-8 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+        <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 border-r-8 border-b-8 border-black flex items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
           <div className="absolute inset-0 opacity-30" style={{
             backgroundImage: 'radial-gradient(circle, black 2px, transparent 2px)',
             backgroundSize: '20px 20px',
           }}></div>
           
           <div className="relative z-10 text-center max-w-2xl">
-            <div className="text-9xl mb-8 transition-all duration-500 hover:scale-125 hover:rotate-12">💊</div>
-            <h1 className="text-[12vw] md:text-9xl font-black text-black uppercase leading-none mb-8 transition-all duration-300 hover:scale-105" style={{
+            <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-6 transition-all duration-500 hover:scale-125 hover:rotate-12">💊</div>
+            <h1 className="text-[14vw] sm:text-[12vw] md:text-7xl lg:text-9xl font-black text-black uppercase leading-none mb-6 transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '6px 6px 0px rgba(0,0,0,0.3)',
             }}>
-              SHOP<br/>HEALING
+              WELLNESS<br/>MARKET
             </h1>
-            <p className="text-3xl md:text-4xl font-bold text-black/90 uppercase tracking-wider">
-              Natural Supplements
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black/90 uppercase tracking-wider">
+              Curated Essentials For Everyday Balance
             </p>
           </div>
         </div>
 
         {/* Right Panel - Purple */}
-        <div className="relative bg-gradient-to-br from-purple-600 to-violet-700 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+        <div className="relative bg-gradient-to-br from-purple-600 to-violet-700 border-b-8 border-black flex items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
           <div className="absolute inset-0 opacity-20" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, black 0px, black 3px, transparent 3px, transparent 15px)',
           }}></div>
           
           <div className="relative z-10 text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-4 transition-all duration-300 hover:scale-105" style={{
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase mb-4 transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '4px 4px 0px rgba(0,0,0,0.5)',
             }}>
-              MEDICAL<br/>GRADE
+              THOUGHTFULLY<br/>CURATED
             </h2>
-            <p className="text-xl text-white/90 font-bold">
-              100% Organic • Lab Tested • Pure
+            <p className="text-base sm:text-lg md:text-xl text-white/90 font-bold">
+              Made For Rest, Energy, And Sustainable Vitality
             </p>
           </div>
         </div>
@@ -86,49 +86,55 @@ export default function Shop() {
       <section className="grid grid-cols-1 md:grid-cols-[1fr_1.618fr]">
         
         {/* Product 1 - Red/Orange */}
-        <div className="relative bg-gradient-to-br from-red-500 to-orange-600 border-r-8 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+        <div className="relative bg-gradient-to-br from-red-500 to-orange-600 border-r-8 border-b-8 border-black min-h-[360px] sm:min-h-[420px] md:min-h-[500px] flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
           <div className="text-center max-w-xl">
-            <h3 className="text-6xl md:text-7xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+            <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
             }}>
-              IMMUNITY<br/>BOOST
+              DAILY VITALITY
             </h3>
-            <p className="text-2xl text-black/90 font-bold mb-6">
-              Elderberry • Zinc • Vitamin C • Echinacea
+            <p className="text-lg sm:text-xl md:text-2xl text-black/90 font-bold mb-6">
+              Build resilience with nutrient-dense blends crafted to keep your momentum steady.
             </p>
-            <div className="text-5xl font-black text-black">$39</div>
+            <p className="text-base sm:text-lg md:text-xl font-black text-black uppercase tracking-wide">
+              Custom tailored sets
+            </p>
           </div>
         </div>
 
         {/* Blue/Yellow Split */}
         <div className="grid grid-rows-[1fr_1.618fr] border-b-8 border-black">
-          <div className="relative bg-gradient-to-br from-blue-600 to-cyan-500 border-b-8 border-black flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+          <div className="relative bg-gradient-to-br from-blue-600 to-cyan-500 border-b-8 border-black flex items-center justify-center px-5 py-10 sm:px-7 sm:py-12 lg:px-8 lg:py-14 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
             <div className="text-center">
-              <h3 className="text-4xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
               }}>
-                ENERGY<br/>BLEND
+                CLARITY & FOCUS
               </h3>
-              <p className="text-xl text-black/80 font-bold mb-3">
-                B-Complex • Ginseng • Ashwagandha
+              <p className="text-base sm:text-lg md:text-xl text-black/80 font-bold mb-3">
+                Support productive days with botanicals selected to sharpen and sustain attention.
               </p>
-              <div className="text-4xl font-black text-black">$45</div>
+              <p className="text-sm sm:text-base md:text-lg font-black text-black uppercase tracking-wide">
+                Mix & match formulas
+              </p>
             </div>
           </div>
           
-          <div className="relative bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+          <div className="relative bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
             <div className="text-center">
-              <h3 className="text-5xl md:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
                 textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
               }}>
-                SLEEP<br/>SUPPORT
+                EVENING RESET
               </h3>
-              <p className="text-2xl text-black/90 font-bold mb-4">
-                Melatonin • Magnesium • Valerian Root
+              <p className="text-lg sm:text-xl md:text-2xl text-black/90 font-bold mb-4">
+                Drift into calm nights with gentle blends that settle the mind and soften tension.
               </p>
-              <div className="text-5xl font-black text-black">$35</div>
+              <p className="text-base sm:text-lg md:text-xl font-black text-black uppercase tracking-wide">
+                Crafted per consultation
+              </p>
             </div>
           </div>
         </div>
@@ -139,50 +145,56 @@ export default function Shop() {
         
         {/* Pink/Orange Split */}
         <div className="grid grid-rows-[1fr_1.618fr] border-r-8 border-b-8 border-black">
-          <div className="relative bg-gradient-to-br from-pink-500 to-rose-600 border-b-8 border-black flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+          <div className="relative bg-gradient-to-br from-pink-500 to-rose-600 border-b-8 border-black flex items-center justify-center px-5 py-10 sm:px-7 sm:py-12 lg:px-8 lg:py-14 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
             <div className="text-center">
-              <h3 className="text-4xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
               }}>
-                STRESS<br/>RELIEF
+                CALM MORNINGS
               </h3>
-              <p className="text-xl text-black/80 font-bold mb-3">
-                Adaptogenic Formula
+              <p className="text-base sm:text-lg md:text-xl text-black/80 font-bold mb-3">
+                Start grounded with adaptogenic support designed for centered, clear beginnings.
               </p>
-              <div className="text-4xl font-black text-black">$42</div>
+              <p className="text-sm sm:text-base md:text-lg font-black text-black uppercase tracking-wide">
+                Guided pairing suggestions
+              </p>
             </div>
           </div>
           
-          <div className="relative bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+          <div className="relative bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
             <div className="text-center max-w-xl">
-              <h3 className="text-5xl md:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
                 textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
               }}>
-                JOINT<br/>HEALTH
+                ACTIVE RECOVERY
               </h3>
-              <p className="text-2xl text-black/90 font-bold mb-4">
-                Turmeric • Glucosamine • MSM • Collagen
+              <p className="text-lg sm:text-xl md:text-2xl text-black/90 font-bold mb-4">
+                Move freely with restorative blends that tend to muscles, joints, and post-workout repair.
               </p>
-              <div className="text-5xl font-black text-black">$48</div>
+              <p className="text-base sm:text-lg md:text-xl font-black text-black uppercase tracking-wide">
+                Personalized recovery kits
+              </p>
             </div>
           </div>
         </div>
 
         {/* Product 6 - Cyan */}
-        <div className="relative bg-gradient-to-br from-cyan-500 to-blue-600 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+        <div className="relative bg-gradient-to-br from-cyan-500 to-blue-600 border-b-8 border-black min-h-[360px] sm:min-h-[420px] md:min-h-[500px] flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
           <div className="text-center max-w-xl">
-            <div className="text-8xl mb-6 transition-all duration-500 hover:scale-125">🌿</div>
-            <h3 className="text-6xl md:text-7xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+            <div className="text-6xl sm:text-7xl md:text-8xl mb-6 transition-all duration-500 hover:scale-125">🌿</div>
+            <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
             }}>
-              DIGESTION
+              RENEW & RESTORE
             </h3>
-            <p className="text-2xl text-black/90 font-bold mb-6">
-              Probiotics • Enzymes • Ginger • Peppermint
+            <p className="text-lg sm:text-xl md:text-2xl text-black/90 font-bold mb-6">
+              Soothe from within with rituals that nurture digestion and long-term wellness habits.
             </p>
-            <div className="text-5xl font-black text-black">$38</div>
+            <p className="text-base sm:text-lg md:text-xl font-black text-black uppercase tracking-wide">
+              Available in seasonal cycles
+            </p>
           </div>
         </div>
       </section>
@@ -191,49 +203,49 @@ export default function Shop() {
       <section className="grid grid-cols-1 md:grid-cols-[1fr_1.618fr]">
         
         {/* Order CTA */}
-        <div className="relative bg-gradient-to-br from-red-600 to-rose-700 border-r-8 border-b-8 border-black min-h-[500px] flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+        <div className="relative bg-gradient-to-br from-red-600 to-rose-700 border-r-8 border-b-8 border-black min-h-[360px] sm:min-h-[420px] md:min-h-[500px] flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
           <div className="text-center">
-            <div className="text-8xl mb-6 transition-all duration-500 hover:scale-125">📦</div>
-            <h3 className="text-4xl font-black text-white uppercase mb-6 transition-all duration-300 hover:scale-105" style={{
+            <div className="text-6xl sm:text-7xl md:text-8xl mb-6 transition-all duration-500 hover:scale-125">📦</div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white uppercase mb-6 transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
             }}>
-              ORDER NOW
+              CURATE YOUR KIT
             </h3>
             <a 
-              href="mailto:lawrencecorso1@gmail.com?subject=Supplement Order"
-              className="inline-block bg-black text-green-400 px-8 py-4 border-4 border-black font-black text-xl uppercase transition-all duration-300 hover:bg-green-400 hover:text-black hover:scale-110"
+              href="mailto:lawrencecorso1@gmail.com?subject=Wellness Shop Inquiry"
+              className="inline-block bg-black text-green-400 px-6 py-3 sm:px-8 sm:py-4 border-4 border-black font-black text-base sm:text-lg md:text-xl uppercase transition-all duration-300 hover:bg-green-400 hover:text-black hover:scale-110"
             >
-              EMAIL US
+              START A CONVERSATION
             </a>
           </div>
         </div>
 
         {/* Purple/Blue Split */}
         <div className="grid grid-rows-[1.618fr_1fr] border-b-8 border-black">
-          <div className="relative bg-gradient-to-br from-purple-500 to-violet-600 border-b-8 border-black flex items-center justify-center p-12 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
+          <div className="relative bg-gradient-to-br from-purple-500 to-violet-600 border-b-8 border-black flex items-center justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-12 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
             <div className="text-center max-w-xl">
-              <h3 className="text-6xl md:text-7xl font-black text-white uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase mb-6 leading-none transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
                 textShadow: '4px 4px 0px rgba(0,0,0,0.5)',
               }}>
-                100%<br/>PURE
+                QUALITY YOU<br/>CAN TRUST
               </h3>
-              <p className="text-2xl text-white/90 font-bold">
-                No Fillers • Lab Tested
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-bold">
+                Every product is vetted for potency, purity, and alignment with holistic values.
               </p>
             </div>
           </div>
           
-          <div className="relative bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center p-8 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
+          <div className="relative bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center px-5 py-10 sm:px-7 sm:py-12 lg:px-8 lg:py-14 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.3s' }}>
             <div className="text-center">
-              <h3 className="text-3xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-black uppercase mb-3 transition-all duration-300 hover:scale-105" style={{
                 fontFamily: 'Arial Black, sans-serif',
               }}>
-                FREE SHIPPING
+                FLEXIBLE DELIVERY
               </h3>
-              <p className="text-xl text-black/90 font-bold">
-                Orders Over $50
+              <p className="text-base sm:text-lg md:text-xl text-black/90 font-bold">
+                Pick up in studio or ship straight to your door—whatever supports your routine.
               </p>
             </div>
           </div>
@@ -323,7 +335,7 @@ export default function Shop() {
             ×
           </button>
           
-          <h2 className="text-4xl md:text-5xl font-black text-black uppercase mb-6 text-center leading-none" style={{
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black uppercase mb-6 text-center leading-none" style={{
             fontFamily: 'Arial Black, sans-serif',
             textShadow: '3px 3px 0px rgba(0,0,0,0.3)',
           }}>
@@ -334,11 +346,11 @@ export default function Shop() {
             <div className="bg-black/30 p-4 border-4 border-black rounded-xl">
               <div className="flex items-center gap-3 mb-2">
                 <div className="text-3xl">📧</div>
-                <h3 className="text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                <h3 className="text-lg sm:text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                   EMAIL
                 </h3>
               </div>
-              <a href="mailto:lawrencecorso1@gmail.com" className="text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors break-all">
+              <a href="mailto:lawrencecorso1@gmail.com" className="text-sm sm:text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors break-all">
                 lawrencecorso1@gmail.com
               </a>
             </div>
@@ -346,30 +358,31 @@ export default function Shop() {
             <div className="bg-black/30 p-4 border-4 border-black rounded-xl">
               <div className="flex items-center gap-3 mb-2">
                 <div className="text-3xl">📱</div>
-                <h3 className="text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                <h3 className="text-lg sm:text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                   PHONE
                 </h3>
               </div>
-              <a href="tel:+15551234567" className="text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors">
-                (555) 123-4567
+              <a href="tel:+17089326851" className="text-sm sm:text-base font-bold text-yellow-300 hover:text-yellow-400 transition-colors">
+                1.708.932.6851
               </a>
             </div>
 
             <div className="bg-black/30 p-4 border-4 border-black rounded-xl">
               <div className="flex items-center gap-3 mb-2">
                 <div className="text-3xl">📍</div>
-                <h3 className="text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+                <h3 className="text-lg sm:text-xl font-black text-white uppercase" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                   LOCATION
                 </h3>
               </div>
-              <p className="text-base font-bold text-yellow-300">
-                Chicago, Illinois
+              <p className="text-sm sm:text-base font-bold text-yellow-300">
+                12803 Circle Pkwy<br/>
+                Palos Park, IL 60464
               </p>
             </div>
           </div>
 
           <div className="mt-4 text-center">
-            <p className="text-sm font-bold text-white/90">
+            <p className="text-xs sm:text-sm font-bold text-white/90">
               Book your consultation today!
             </p>
           </div>

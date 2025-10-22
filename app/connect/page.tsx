@@ -25,7 +25,7 @@ const tiles = [
   },
   {
     title: "Studio",
-    subtitle: "77 E Jackson Blvd, Suite 1618, Chicago",
+    subtitle: "12803 Circle Pkwy, Palos Park, IL 60464",
     className:
       "md:col-span-2 bg-gradient-to-br from-white to-[#e5e5e5] text-black",
   },

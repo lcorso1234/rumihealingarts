@@ -12,6 +12,29 @@ const navLinks = [
 export default function BottomNav() {
   const pathname = usePathname();
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Rumi Healing Arts',
+          text: 'Check out Rumi Healing Arts - Entrepreneur Care',
+          url: window.location.href,
+        });
+      } catch (err) {
+        // User cancelled or share failed
+        console.log('Share cancelled or failed:', err);
+      }
+    } else {
+      // Fallback: copy to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    }
+  };
+
   return (
     <nav className="pointer-events-none fixed inset-x-0 bottom-[18px] z-50 flex justify-center px-4">
       <div className="pointer-events-auto flex w-full max-w-5xl items-center gap-3 rounded-full bg-slate-900/95 px-4 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.45)] ring-1 ring-cyan-500/40 backdrop-blur-xl">
@@ -44,6 +67,12 @@ export default function BottomNav() {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={handleShare}
+            className="flex items-center gap-2 rounded-full bg-gradient-to-br from-violet-500 to-pink-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-[0_0_20px_rgba(168,85,247,0.45)] transition hover:scale-105"
+          >
+            🔗 Share
+          </button>
           <a
             href="mailto:lawrencecorso1@gmail.com"
             className="flex items-center gap-2 rounded-full bg-gradient-to-br from-fuchsia-500 to-orange-400 px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-[0_0_20px_rgba(249,115,22,0.45)] transition hover:scale-105"
@@ -51,7 +80,7 @@ export default function BottomNav() {
             ✉️ Email
           </a>
           <a
-            href="tel:7089326851"
+            href="tel:+17089326851"
             className="flex items-center gap-2 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 shadow-[0_0_20px_rgba(45,212,191,0.45)] transition hover:scale-105"
           >
             📞 Call
