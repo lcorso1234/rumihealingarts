@@ -24,9 +24,12 @@ export default function Shop() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black border-8 border-white shadow-2xl">
+    <div className="min-h-screen bg-black border-8 border-white shadow-2xl box-border overflow-x-hidden">
       
       <style jsx global>{`
+        body {
+          overflow-x: hidden;
+        }
         .animate-on-scroll {
           opacity: 0;
           transform: translateY(30px);
@@ -38,45 +41,24 @@ export default function Shop() {
         }
       `}</style>
       
-      {/* HERO GRID - Golden Ratio Layout */}
-      <section className="grid grid-cols-1 md:grid-cols-[1.618fr_1fr] min-h-screen">
-        
-        {/* Left Panel - Green */}
-        <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 border-r-8 border-b-8 border-black flex items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
+      {/* HERO */}
+      <section className="grid grid-cols-1 min-h-[calc(100vh-24px)]">
+        <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 border-b-8 border-black flex items-center justify-center px-6 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110">
           <div className="absolute inset-0 opacity-30" style={{
             backgroundImage: 'radial-gradient(circle, black 2px, transparent 2px)',
             backgroundSize: '20px 20px',
           }}></div>
           
           <div className="relative z-10 text-center max-w-2xl">
-            <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-6 transition-all duration-500 hover:scale-125 hover:rotate-12">💊</div>
-            <h1 className="text-[14vw] sm:text-[12vw] md:text-7xl lg:text-9xl font-black text-black uppercase leading-none mb-6 transition-all duration-300 hover:scale-105" style={{
+            <div className="text-[clamp(3.5rem,8vw,6rem)] mb-6 transition-all duration-500 hover:scale-125 hover:rotate-12">💊</div>
+            <h1 className="text-[clamp(3.75rem,11vw,6.75rem)] font-black text-black uppercase leading-none mb-6 transition-all duration-300 hover:scale-105" style={{
               fontFamily: 'Arial Black, sans-serif',
               textShadow: '6px 6px 0px rgba(0,0,0,0.3)',
             }}>
               WELLNESS<br/>MARKET
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black/90 uppercase tracking-wider">
+            <p className="text-lg sm:text-xl md:text-2xl font-bold text-black/90 uppercase tracking-wider">
               Curated Essentials For Everyday Balance
-            </p>
-          </div>
-        </div>
-
-        {/* Right Panel - Purple */}
-        <div className="relative bg-gradient-to-br from-purple-600 to-violet-700 border-b-8 border-black flex items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20 animate-on-scroll transition-all duration-500 hover:scale-[1.02] hover:brightness-110" style={{ animationDelay: '0.2s' }}>
-          <div className="absolute inset-0 opacity-20" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, black 0px, black 3px, transparent 3px, transparent 15px)',
-          }}></div>
-          
-          <div className="relative z-10 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase mb-4 transition-all duration-300 hover:scale-105" style={{
-              fontFamily: 'Arial Black, sans-serif',
-              textShadow: '4px 4px 0px rgba(0,0,0,0.5)',
-            }}>
-              THOUGHTFULLY<br/>CURATED
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-white/90 font-bold">
-              Made For Rest, Energy, And Sustainable Vitality
             </p>
           </div>
         </div>
